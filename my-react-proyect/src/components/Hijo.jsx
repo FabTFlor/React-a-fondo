@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Hijo({ msn, SaludodesdeHijoaPadre }) {
   return (
@@ -17,13 +17,15 @@ function Hijo({ msn, SaludodesdeHijoaPadre }) {
 }
 
 function Padre() {
-  const SaludodesdeHijoaPadre = (msn) => {
-    console.log(msn);
+  const [saludo, setSaludo] = useState("");
+  const SaludodesdeHijoaPadre = (mensaje) => {
+    setSaludo(mensaje);
   };
   return (
     <div>
       <div>Padre</div>
       <Hijo msn="hola hijo" SaludodesdeHijoaPadre={SaludodesdeHijoaPadre} />
+      Mensaje desde Hijo: {saludo}
     </div>
   );
 }
